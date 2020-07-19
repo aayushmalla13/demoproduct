@@ -357,6 +357,12 @@ class _ProductFormState extends State<ProductForm> {
                       TextFormField(
                         keyboardType: TextInputType.multiline,
                         maxLines: null,
+                        validator: (value) {
+                          if (value.length > 255) {
+                            return 'Please enter less than 255 words';
+                          }
+                          return null;
+                        },
                         onChanged: (value) => {
                           setState(() {
                             description = value;
